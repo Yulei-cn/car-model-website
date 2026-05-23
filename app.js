@@ -116,7 +116,7 @@ function moveGallery(delta) {
 function renderCatalog(items) {
   catalogGrid.innerHTML = items
     .map((item, index) => {
-      const image = item.cover || item.images[0];
+      const image = item.thumbnail || item.cover || item.images[0];
       return `
         <article class="model-card" data-model-index="${index}">
           <img src="${encodeURI(image)}" alt="${normalizeName(item.name)}" loading="lazy" />

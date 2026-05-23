@@ -12,6 +12,8 @@
 - 当前页面展示不需要 Supabase；后续如果要管理库存状态、价格、预约和客户询价，再接 Supabase。
 - 车模数据由本地图片目录生成：`C:\Users\57799\Pictures\car\archive`。
 - 更新库存时运行 `scripts/sync-assets.ps1`，自动复制图片并生成 `data/catalog.json`。
+- 首页使用 WebP 缩略图，用户点开图库时才加载原图，降低 Vercel 出站流量。
+- 本地打印文件通过 `.vercelignore` 排除在线部署，只保留在 GitHub 和本地仓库中。
 
 ## 隐私与联系方式策略
 

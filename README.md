@@ -22,6 +22,7 @@ C:\Users\57799\Pictures\car\archive
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\sync-assets.ps1
+python .\scripts\generate-thumbnails.py
 ```
 
 然后提交并推送：
@@ -53,3 +54,9 @@ git push
 - `AI生成关键词.txt`：5 个明信片和 5 个海报的 AI 图像生成正向/反向关键词。
 
 海报已经嵌入网站二维码 `assets/qr/site-qrcode.png`。明信片只保留微信二维码占位，不放收款码。
+
+## 流量控制
+
+- 首页车型卡片使用 `assets/thumbs` 下的 WebP 缩略图。
+- 用户点开图库时才加载原图。
+- `明信片`、`海报A4`、`海报A6` 等本地打印文件通过 `.vercelignore` 排除在线部署，避免占用 Vercel 访问流量。
