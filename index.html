@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>车模网站 | 法国车模代购与收藏</title>
+    <meta
+      name="description"
+      content="法国本地车模代购与收藏展示，查看现有模型照片、集运进度和联系方式。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="#top">车模网站</a>
+        <div class="nav-links">
+          <a href="#catalog">现有模型</a>
+          <a href="#shipping">集运进度</a>
+          <a href="#contact">联系</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">France sourcing · model cars</p>
+          <h1>法国本地车模代购与收藏清单</h1>
+          <p>
+            这里展示我手里已经整理好的车模照片。重点不是低价冲量，而是法国本地渠道、
+            中高端模型、真实图片和可追踪的集运节奏。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#catalog">查看模型</a>
+            <a class="button secondary" href="#shipping">本期集运</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section stats-band" aria-label="站点数据">
+        <div>
+          <span id="model-count">--</span>
+          <p>车型文件夹</p>
+        </div>
+        <div>
+          <span id="photo-count">--</span>
+          <p>实拍图片</p>
+        </div>
+        <div>
+          <span>法国</span>
+          <p>本地采购与集运</p>
+        </div>
+      </section>
+
+      <section class="section" id="shipping">
+        <div class="section-heading">
+          <p class="eyebrow">Group shipping</p>
+          <h2>本期集运节奏</h2>
+          <p>
+            时间以实际采购和物流为准。需要参加集运的客户，请尽量在结单前确认车型、
+            价格和收货信息。
+          </p>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+
+      <section class="section" id="catalog">
+        <div class="section-heading catalog-heading">
+          <div>
+            <p class="eyebrow">Catalog</p>
+            <h2>现有模型照片</h2>
+            <p>按本地图片文件夹自动生成。搜索支持品牌、车型、比例和日期。</p>
+          </div>
+          <label class="search">
+            <span>搜索</span>
+            <input id="search-input" type="search" placeholder="例如 Peugeot / BMW / 1_18" />
+          </label>
+        </div>
+        <div class="catalog-grid" id="catalog-grid"></div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>联系与隐私</h2>
+          <p>
+            公网页面只放邮箱，不直接公开微信二维码和收款码。已成交客户会在包裹明信片中
+            收到微信二维码，后续沟通可以减少平台手续费，也更适合长期收藏交流。
+          </p>
+        </div>
+        <address>
+          <a href="mailto:your-email@example.com">your-email@example.com</a>
+          <span>微信二维码：仅随包裹明信片提供</span>
+        </address>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> 车模网站 · France sourcing for collectors</p>
+    </footer>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
