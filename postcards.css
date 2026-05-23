@@ -63,6 +63,20 @@ body {
   box-shadow: 0 18px 46px rgba(20, 24, 29, 0.18);
 }
 
+.side-label {
+  position: absolute;
+  left: 6mm;
+  top: 5mm;
+  z-index: 3;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.side-label.light {
+  color: white;
+}
+
 .postcard h2 {
   margin: 0;
   font-size: 30px;
@@ -93,6 +107,81 @@ body {
   font-size: 11px;
   font-weight: 900;
   text-align: center;
+}
+
+.postcard-back {
+  display: grid;
+  grid-template-columns: 1fr 30mm;
+  gap: 12mm;
+  align-items: end;
+  padding: 14mm;
+}
+
+.postcard-back h2 {
+  max-width: 94mm;
+}
+
+.back-contact {
+  display: grid;
+  gap: 8px;
+}
+
+.back-contact span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.eiffel-back {
+  background:
+    radial-gradient(circle at 84% 18%, rgba(185, 139, 60, 0.22), transparent 22%),
+    linear-gradient(135deg, #fbf4e8, #e3edf7);
+}
+
+.museum-back {
+  background:
+    linear-gradient(90deg, transparent 0 62%, rgba(24, 61, 114, 0.08) 62%),
+    var(--paper);
+}
+
+.post-lines {
+  position: absolute;
+  right: 14mm;
+  top: 18mm;
+  width: 46mm;
+  height: 34mm;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.post-lines::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 16mm;
+  border-top: 1px solid var(--line);
+}
+
+.atelier-back {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 12mm, rgba(184, 139, 60, 0.14) 12mm 12.3mm),
+    #fbf6eb;
+}
+
+.blue-back {
+  color: white;
+  background: linear-gradient(135deg, #10223d, #183d72 56%, #b2212f);
+}
+
+.blue-back p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.parcel-back {
+  background:
+    linear-gradient(135deg, rgba(178, 33, 47, 0.1), transparent 45%),
+    #fbf6eb;
 }
 
 .inverse { color: white; }
@@ -364,6 +453,10 @@ body {
   .bottom-row {
     position: static;
     margin-top: 12mm;
+  }
+
+  .postcard-back {
+    grid-template-columns: 1fr;
   }
 }
 
