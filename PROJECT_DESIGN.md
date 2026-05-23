@@ -14,6 +14,7 @@
 - 更新库存时运行 `scripts/sync-assets.ps1`，自动复制图片并生成 `data/catalog.json`。
 - 首页使用 WebP 缩略图，用户点开图库时才加载原图，降低 Vercel 出站流量。
 - 本地打印文件通过 `.vercelignore` 排除在线部署，只保留在 GitHub 和本地仓库中。
+- 通过 `vercel.json` 添加安全响应头和缓存策略；具体说明见 `SECURITY.md`。
 
 ## 隐私与联系方式策略
 
