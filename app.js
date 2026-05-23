@@ -85,8 +85,7 @@ function getStageProgress(item, today) {
 
 function getStageState(progress) {
   if (progress >= 100) return "已完成";
-  if (progress > 0) return "进行中";
-  return "未开始";
+  return "未完成";
 }
 
 function getOverallProgress(today) {
@@ -110,7 +109,7 @@ function renderTimeline() {
       const progress = getStageProgress(item, today);
       const state = getStageState(progress);
       return `
-        <li class="current ${state === "已完成" ? "is-done" : ""} ${state === "进行中" ? "is-active" : ""}" style="--stage-progress: ${progress}%">
+        <li class="current ${state === "已完成" ? "is-done" : ""}" style="--stage-progress: ${progress}%">
           <span class="step-index">${index + 1}</span>
           <span class="step-state">${state}</span>
           <strong>${item.title}</strong>
