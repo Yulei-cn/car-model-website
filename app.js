@@ -3,6 +3,8 @@ const searchInput = document.querySelector("#search-input");
 const timeline = document.querySelector("#timeline");
 const modelCount = document.querySelector("#model-count");
 const photoCount = document.querySelector("#photo-count");
+const shippingProgressFill = document.querySelector("#shipping-progress-fill");
+const shippingProgressLabel = document.querySelector("#shipping-progress-label");
 const galleryDialog = document.querySelector("#gallery-dialog");
 const galleryImage = document.querySelector("#gallery-image");
 const galleryTitle = document.querySelector("#gallery-title");
@@ -23,21 +25,29 @@ const config = {
       title: "已完成准备",
       date: "4月 - 5月中旬",
       text: "确认采购清单、价格、车况和卖家，完成本期集中采购准备。",
+      start: "2026-04-01",
+      end: "2026-05-15",
     },
     {
       title: "结单与封箱",
-      date: "5月下旬",
+      date: "5月16日 - 5月28日",
       text: "完成付款确认、拍照留档、合箱加固和转运资料整理。",
+      start: "2026-05-16",
+      end: "2026-05-28",
     },
     {
       title: "封箱转运",
       date: "5月29日",
       text: "本期包裹封箱并开始转运，后续以物流和清关实际状态为准。",
+      start: "2026-05-29",
+      end: "2026-05-29",
     },
     {
       title: "预计配送",
       date: "6月第一周",
       text: "预计到中国、完成海关查验并出关，第一周内开始陆续国内配送。",
+      start: "2026-06-01",
+      end: "2026-06-07",
     },
   ],
   nextShipping: [
@@ -59,26 +69,62 @@ const config = {
   ],
 };
 
+function toDate(value) {
+  return new Date(`${value}T00:00:00`);
+}
+
+function getStageProgress(item, today) {
+  const start = toDate(item.start);
+  const end = toDate(item.end);
+  const day = 24 * 60 * 60 * 1000;
+  const adjustedEnd = new Date(end.getTime() + day);
+  if (today >= adjustedEnd) return 100;
+  if (today < start) return 0;
+  return Math.round(((today - start) / (adjustedEnd - start)) * 100);
+}
+
+function getStageState(progress) {
+  if (progress >= 100) return "已完成";
+  if (progress > 0) return "进行中";
+  return "未开始";
+}
+
+function getOverallProgress(today) {
+  const stages = config.currentShipping;
+  const total = stages.reduce((sum, item) => sum + getStageProgress(item, today), 0);
+  return Math.round(total / stages.length);
+}
+
 function normalizeName(value) {
   return value.replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function renderTimeline() {
+  const today = new Date();
+  const overallProgress = getOverallProgress(today);
+  shippingProgressFill.style.width = `${overallProgress}%`;
+  shippingProgressLabel.textContent = `${overallProgress}%`;
+
   const current = config.currentShipping
-    .map(
-      (item) => `
-        <li class="current">
+    .map((item, index) => {
+      const progress = getStageProgress(item, today);
+      const state = getStageState(progress);
+      return `
+        <li class="current ${state === "已完成" ? "is-done" : ""} ${state === "进行中" ? "is-active" : ""}" style="--stage-progress: ${progress}%">
+          <span class="step-index">${index + 1}</span>
+          <span class="step-state">${state}</span>
           <strong>${item.title}</strong>
           <time>${item.date}</time>
           <p>${item.text}</p>
         </li>
-      `,
-    )
+      `;
+    })
     .join("");
   const next = config.nextShipping
-    .map(
-      (item) => `
+    .map((item, index) => `
         <li class="next">
+          <span class="step-index">${index + 1}</span>
+          <span class="step-state">预告</span>
           <strong>${item.title}</strong>
           <time>${item.date}</time>
           <p>${item.text}</p>

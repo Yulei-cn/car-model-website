@@ -38,18 +38,14 @@
         </div>
       </section>
 
-      <section class="section stats-band" aria-label="站点数据">
+      <section class="inventory-strip" aria-label="库存概览">
         <div>
           <span id="model-count">--</span>
-          <p>车型文件夹</p>
+          <p>车型</p>
         </div>
         <div>
           <span id="photo-count">--</span>
-          <p>实拍图片</p>
-        </div>
-        <div>
-          <span>法国</span>
-          <p>本地采购与集运</p>
+          <p>实拍</p>
         </div>
       </section>
 
@@ -69,6 +65,15 @@
           <div>
             <span>下期预告</span>
             <strong>6月开始准备，7月集中采买，8月转运封箱</strong>
+          </div>
+        </div>
+        <div class="shipping-progress" aria-label="当期集运总体进度">
+          <div class="shipping-progress-top">
+            <span>当期进度</span>
+            <strong id="shipping-progress-label">--</strong>
+          </div>
+          <div class="shipping-progress-track">
+            <span id="shipping-progress-fill"></span>
           </div>
         </div>
         <ol class="timeline" id="timeline"></ol>
