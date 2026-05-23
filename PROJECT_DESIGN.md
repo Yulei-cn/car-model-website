@@ -8,8 +8,8 @@
 
 ## 技术路线
 
-- 第一阶段使用纯静态网站：HTML、CSS、JavaScript、GitHub Pages。
-- 当前不接 Supabase 数据库，因为没有登录、下单、客户资料保存等需求。
+- 第一阶段使用静态网站：HTML、CSS、JavaScript、GitHub/Vercel。
+- 当前页面展示不需要 Supabase；后续如果要管理库存状态、价格、预约和客户询价，再接 Supabase。
 - 车模数据由本地图片目录生成：`C:\Users\57799\Pictures\car\archive`。
 - 更新库存时运行 `scripts/sync-assets.ps1`，自动复制图片并生成 `data/catalog.json`。
 
@@ -19,11 +19,15 @@
 - 微信二维码、收款码不放公开网页，避免被爬取、骚扰、盗图误用或被平台风控关联。
 - 微信二维码、收款码只放在随包裹明信片中，因为收到包裹的人已经是成交客户，信任程度更高。
 
-## 设计顺序
+## 阶段流程
+
+顺序固定为：网页 -> 明信片 -> 海报。
+
+每完成一个阶段就提交并同步到 GitHub。明信片阶段完成后自动进入海报阶段，不再等待额外指令。
 
 ### 1. 网页
 
-状态：已完成第一版。
+状态：已完成第一版并同步。
 
 内容：
 - 移动端优先首页。
@@ -37,36 +41,36 @@
 - 布局先按单列手机设计，再扩展到平板和电脑。
 - 图片懒加载，卡片尺寸稳定，避免手机端横向滚动。
 
+线上地址：
+- Vercel：`https://car-model-website-smoky.vercel.app/`
+- GitHub Pages：`https://yulei-cn.github.io/car-model-website/`
+
 ### 2. 明信片
 
-状态：已完成 5 个概念版式，文件在 `print-designs.html`。
+状态：进行中。
 
 用途：
 - 放入包裹内。
 - 可以直接放微信二维码和收款码。
-- 提高复购和私域联系。
+- 强化“法国代购”定位，提高复购和私域联系。
 
-当前版本方向：
-- Atelier 法国工作室感。
-- Tricolore 法国三色元素。
-- Salon 深色收藏感。
-- FR 标章简洁版。
-- Performance 高性能车视觉版。
+设计要求：
+- 必须明显突出法国代购。
+- 风格可以浪漫一点，允许铁塔、卢浮宫、法国邮戳、法式街景等元素。
+- 5 个版本要明显不同，方便挑选。
+- 当前用 HTML/CSS 做可打印稿，二维码与收款码保留占位，后续替换真实图片。
 
 ### 3. 海报
 
-状态：已完成 5 个 A4 概念版式，文件在 `print-designs.html`。
+状态：明信片同步后自动开始。
 
 用途：
 - 当前阶段可用 A4 纸打印。
 - 后续可以交给工厂按正式尺寸、出血、纸张工艺重新导出。
 
-当前版本方向：
-- 法国本地代购主视觉。
-- 集运时间说明。
-- 品牌集合宣传。
-- 高价模型信息透明说明。
-- 感谢与复购引导。
+设计要求：
+- 与明信片一样提供 5 个版本。
+- 突出法国本地车模代购、中高端收藏、集运节奏和真实库存照片。
 
 ## 同步规范
 
@@ -74,8 +78,8 @@
 
 ```powershell
 git add .
-git commit -m "Complete website phase"
+git commit -m "Complete postcard phase"
 git push
 ```
 
-目前本机 `git` 可执行文件在 `C:\Program Files\Git\cmd\git.exe`，但没有加入 PATH；`gh` GitHub CLI 未安装。因此当前可以用完整路径做本地 Git 操作，云端创建仓库需要后续通过 GitHub 网页、GitHub Desktop，或安装 GitHub CLI 完成。
+当前 GitHub 远端仓库为 `https://github.com/Yulei-cn/car-model-website`。

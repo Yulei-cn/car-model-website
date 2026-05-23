@@ -1,0 +1,394 @@
+:root {
+  --paper: #f8f1e4;
+  --ink: #171c22;
+  --muted: #66717b;
+  --red: #b2212f;
+  --blue: #183d72;
+  --gold: #b98b3c;
+  --line: #d8cbb7;
+  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #e8e0d2;
+  color: var(--ink);
+}
+
+.screen-header {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 20px 8px;
+}
+
+.screen-header h1 {
+  margin: 0 0 10px;
+  font-size: clamp(30px, 5vw, 52px);
+  letter-spacing: 0;
+}
+
+.screen-header p {
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.postcard-list {
+  display: grid;
+  gap: 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+.postcard {
+  position: relative;
+  width: min(100%, 148mm);
+  min-height: 100mm;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 0 18px 46px rgba(20, 24, 29, 0.18);
+}
+
+.postcard h2 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.postcard p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+.postcard img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.qr {
+  display: grid;
+  min-width: 24mm;
+  min-height: 24mm;
+  place-items: center;
+  border: 1px dashed currentColor;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.inverse { color: white; }
+
+.eiffel-romance {
+  display: grid;
+  grid-template-columns: 52% 48%;
+  background:
+    radial-gradient(circle at 82% 16%, rgba(255, 238, 192, 0.72), transparent 20%),
+    linear-gradient(135deg, #f8ecdc, #f5d8d4 50%, #dce8f3);
+}
+
+.photo-panel { padding: 8mm; }
+
+.photo-panel img {
+  height: 84mm;
+  border-radius: 6px;
+}
+
+.copy-panel {
+  position: relative;
+  padding: 12mm 9mm;
+}
+
+.eiffel-mark {
+  position: absolute;
+  right: 8mm;
+  top: 8mm;
+  width: 22mm;
+  height: 42mm;
+  opacity: 0.18;
+}
+
+.eiffel-mark::before,
+.eiffel-mark::after,
+.eiffel-mark span,
+.eiffel-mark i {
+  content: "";
+  position: absolute;
+  background: var(--blue);
+}
+
+.eiffel-mark::before {
+  left: 10mm;
+  width: 2mm;
+  height: 38mm;
+  transform: skewX(-14deg);
+}
+
+.eiffel-mark::after {
+  right: 10mm;
+  width: 2mm;
+  height: 38mm;
+  transform: skewX(14deg);
+}
+
+.eiffel-mark span {
+  left: 4mm;
+  right: 4mm;
+  top: 18mm;
+  height: 1.5mm;
+}
+
+.eiffel-mark i {
+  left: 1mm;
+  right: 1mm;
+  bottom: 0;
+  height: 2mm;
+}
+
+.contact-strip {
+  display: grid;
+  grid-template-columns: 24mm 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14mm;
+}
+
+.contact-strip strong,
+.contact-strip span { display: block; }
+
+.contact-strip span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.louvre-gallery {
+  display: grid;
+  grid-template-columns: 54% 46%;
+  align-items: stretch;
+  background: #111820;
+  color: white;
+}
+
+.louvre-bg {
+  position: absolute;
+  inset: 0 46% 0 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px) 0 0 / 11mm 100%,
+    linear-gradient(#18283b, #0d131b);
+}
+
+.louvre-bg span {
+  position: absolute;
+  left: 18mm;
+  bottom: 12mm;
+  width: 74mm;
+  height: 42mm;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.04));
+}
+
+.museum-copy {
+  position: relative;
+  z-index: 1;
+  padding: 14mm 12mm;
+}
+
+.museum-copy p { color: rgba(255, 255, 255, 0.74); }
+
+.signature {
+  margin-top: 14mm;
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.louvre-gallery > img { height: 100mm; }
+
+.floating {
+  position: absolute;
+  right: 8mm;
+  bottom: 8mm;
+  color: white;
+  background: rgba(17, 24, 32, 0.62);
+}
+
+.atelier-letter {
+  padding: 12mm;
+  background:
+    linear-gradient(90deg, transparent 0 68%, rgba(24, 61, 114, 0.08) 68%),
+    repeating-linear-gradient(0deg, transparent 0 13mm, rgba(184, 139, 60, 0.15) 13mm 13.3mm),
+    var(--paper);
+}
+
+.stamp {
+  position: absolute;
+  right: 12mm;
+  top: 10mm;
+  display: grid;
+  width: 22mm;
+  height: 22mm;
+  place-items: center;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  color: var(--red);
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.letter-copy { width: 74%; }
+.letter-copy h2 { font-size: 28px; }
+
+.bottom-row {
+  position: absolute;
+  left: 12mm;
+  right: 12mm;
+  bottom: 10mm;
+  display: grid;
+  grid-template-columns: 24mm 24mm 1fr;
+  gap: 9px;
+  align-items: center;
+}
+
+.mini-note {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.riviera-blue { color: white; }
+.riviera-blue img { position: absolute; inset: 0; }
+
+.blue-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  padding: 12mm;
+  background:
+    linear-gradient(90deg, rgba(9, 18, 31, 0.88), rgba(9, 18, 31, 0.32)),
+    linear-gradient(0deg, rgba(24, 61, 114, 0.74), transparent 55%);
+}
+
+.blue-overlay p {
+  max-width: 82mm;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.blue-overlay .qr { margin-top: 10mm; }
+
+.parcel-card {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  background:
+    linear-gradient(135deg, rgba(178, 33, 47, 0.08), transparent 45%),
+    #fbf6eb;
+}
+
+.route {
+  position: absolute;
+  left: 10mm;
+  top: 9mm;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.route i {
+  width: 26mm;
+  height: 1px;
+  background: currentColor;
+}
+
+.parcel-card img {
+  height: 100mm;
+  filter: saturate(0.92) contrast(1.04);
+}
+
+.parcel-copy { padding: 27mm 11mm 10mm; }
+.parcel-copy h2 { color: var(--red); }
+
+.contact-line {
+  margin-top: 14mm;
+  border-top: 1px solid var(--line);
+  padding-top: 8mm;
+  color: var(--blue);
+  font-weight: 900;
+}
+
+@media (min-width: 980px) {
+  .postcard-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .postcard {
+    width: 100%;
+    min-height: 116mm;
+  }
+
+  .eiffel-romance,
+  .louvre-gallery,
+  .parcel-card { grid-template-columns: 1fr; }
+
+  .photo-panel img,
+  .louvre-gallery > img,
+  .parcel-card img { height: 52mm; }
+
+  .louvre-bg { inset: 0; }
+  .letter-copy { width: 100%; }
+
+  .bottom-row {
+    position: static;
+    margin-top: 12mm;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 6mm;
+  }
+
+  body { background: white; }
+  .screen-header { display: none; }
+
+  .postcard-list {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+
+  .postcard {
+    width: 148mm;
+    min-height: 100mm;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+}

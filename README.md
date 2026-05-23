@@ -40,7 +40,7 @@ git push
 
 ## 打印设计稿
 
-- `print-designs.html`：5 个明信片版本和 5 个 A4 海报版本。
-- `print-designs.css`：屏幕预览和打印样式。
+- `postcards.html`：5 个法国代购主题明信片版本。
+- `postcards.css`：明信片屏幕预览和打印样式。
 
 二维码、收款码目前是占位框。正式打印前，把占位框替换成真实图片，或交给印厂按版式替换。
