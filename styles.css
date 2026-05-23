@@ -369,6 +369,10 @@ h2 {
   font-weight: 900;
 }
 
+.timeline li.is-active .step-state {
+  color: var(--accent-dark);
+}
+
 .timeline strong {
   display: block;
   margin-bottom: 8px;
