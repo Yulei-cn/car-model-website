@@ -16,8 +16,6 @@ FONT_REG = "C:/Windows/Fonts/Deng.ttf"
 
 POSTCARD_SIZE = (1748, 1181)
 A4_SIZE = (2480, 3508)
-A6_SIZE = (1240, 1748)
-
 
 POSTCARDS = {
     1: {
@@ -145,9 +143,9 @@ def save_postcard_front(num: int, spec: dict) -> None:
     draw.text((text_xy[0], y + 58), spec["note"], font=font(31), fill=(245, 245, 245))
     qr_placeholder(draw, qr_box)
 
-    out = OUT / "明信片" / str(num)
+    out = OUT / "明信片"
     out.mkdir(parents=True, exist_ok=True)
-    canvas.save(out / "正面.png", quality=95)
+    canvas.save(out / f"明信片{num}-正面.png", quality=95)
 
 
 def save_postcard_back(num: int, spec: dict) -> None:
@@ -166,9 +164,9 @@ def save_postcard_back(num: int, spec: dict) -> None:
     draw.line((W - 610, 720, W - 150, 720), fill=(216, 203, 183), width=3)
     draw.line((W - 610, 800, W - 150, 800), fill=(216, 203, 183), width=3)
     draw.line((W - 610, 880, W - 150, 880), fill=(216, 203, 183), width=3)
-    out = OUT / "明信片" / str(num)
+    out = OUT / "明信片"
     out.mkdir(parents=True, exist_ok=True)
-    canvas.save(out / "反面.png", quality=95)
+    canvas.save(out / f"明信片{num}-反面.png", quality=95)
 
 
 def save_poster_a4(num: int, spec: dict) -> None:
@@ -180,22 +178,9 @@ def save_poster_a4(num: int, spec: dict) -> None:
     draw.text((155, H - 565), spec["subtitle"], font=font(58), fill=(232, 210, 170))
     paste_site_qr(canvas, (W - 530, H - 550, W - 230, H - 250))
     draw.text((W - 605, H - 210), "扫码查看现有模型", font=font(42, True), fill=(255, 255, 255))
-    out = OUT / "海报A4" / str(num)
+    out = OUT / "海报"
     out.mkdir(parents=True, exist_ok=True)
-    canvas.save(out / "海报.png", quality=95)
-
-
-def save_poster_a6(num: int, spec: dict) -> None:
-    canvas = cover(Image.open(AI / spec["file"]), A6_SIZE)
-    draw = ImageDraw.Draw(canvas, "RGBA")
-    W, H = A6_SIZE
-    draw.rectangle((0, H - 470, W, H), fill=(12, 16, 22, 196))
-    draw.text((70, H - 405), spec["title"], font=font(62, True), fill=(255, 255, 255))
-    draw_wrapped(draw, (74, H - 320), spec["subtitle"], font(32), (232, 210, 170), width_chars=15, line_gap=10)
-    paste_site_qr(canvas, (W - 300, H - 300, W - 110, H - 110))
-    out = OUT / "海报A6" / str(num)
-    out.mkdir(parents=True, exist_ok=True)
-    canvas.save(out / "海报.png", quality=95)
+    canvas.save(out / f"海报{num}-A4.png", quality=95)
 
 
 def main() -> None:
@@ -204,10 +189,9 @@ def main() -> None:
         save_postcard_back(num, spec)
     for num, spec in POSTERS.items():
         save_poster_a4(num, spec)
-        save_poster_a6(num, spec)
 
     (OUT / "README.md").write_text(
-        "这里是基于 ai/ 原始图继续加工后的成品 PNG。缺少 4 号是因为当前没有满意的 AI 原图。\n",
+        "这里是基于 ai/ 原始图继续加工后的成品 PNG。文件已经拍平，方便直接连续查看。当前没有 A6 原图，所以不生成 A6。\n",
         encoding="utf-8",
     )
     print("Processed AI collateral.")
