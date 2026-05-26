@@ -17,6 +17,7 @@ POSTCARD_FILES = [
     AI / "明信片 8.png",
     AI / "明信片 8 反.png",
     AI / "明信片 9.png",
+    AI / "明信片 9 反.png",
     AI / "明信片 10.png",
     AI / "明信片 10 反.png",
     AI / "海报 1 A4.png",
