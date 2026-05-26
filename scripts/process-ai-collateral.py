@@ -6,6 +6,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 AI = ROOT / "ai"
 POSTCARD_FILES = [
+    AI / "明信片 1.png",
+    AI / "明信片 2.png",
+    AI / "明信片 3.png",
+    AI / "明信片 5.png",
+    AI / "明信片 6.png",
+    AI / "明信片 6 反.png",
+    AI / "明信片 7.png",
+    AI / "明信片 7 反.png",
+    AI / "明信片 8.png",
+    AI / "明信片 8 反.png",
+    AI / "明信片 9.png",
     AI / "明信片 10.png",
     AI / "明信片 10 反.png",
 ]
