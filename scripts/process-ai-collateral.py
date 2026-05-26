@@ -19,6 +19,10 @@ POSTCARD_FILES = [
     AI / "明信片 9.png",
     AI / "明信片 10.png",
     AI / "明信片 10 反.png",
+    AI / "海报 1 A4.png",
+    AI / "海报 2 A4.png",
+    AI / "海报 3 A4.png",
+    AI / "海报 5 A4.png",
 ]
 
 
@@ -27,7 +31,7 @@ def main() -> None:
     if missing:
         raise SystemExit(f"Missing postcard files: {', '.join(missing)}")
 
-    print("Postcard source files are ready:")
+    print("AI source files are ready:")
     for path in POSTCARD_FILES:
         print(f"- {path.relative_to(ROOT)}")
 
