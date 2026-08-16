@@ -3,150 +3,96 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>赠品明信片 | 法国车模代购</title>
-    <meta name="description" content="购买车模后可选择随包裹赠送的明信片款式。" />
+    <title>物流进程 | 法国车模代购</title>
+    <meta name="description" content="查看法国车模集运批次的当前物流进程和配送说明。" />
     <link rel="stylesheet" href="./postcard.css" />
   </head>
   <body>
     <header class="topbar">
       <a href="./index.html">车模网站</a>
-      <span>赠品明信片</span>
+      <span>物流进程</span>
     </header>
 
     <main>
-      <section class="hero">
-        <p class="eyebrow">Gift postcard</p>
-        <h1>购车赠品明信片</h1>
-        <p>购买车模后，可以从下面的设计里选一张随包裹一起寄出。正反面款式成对展示，海报款也可作为包装内赠品参考。</p>
-      </section>
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">Shipping details</p>
+          <h1>物流进程</h1>
+        </div>
+        <button class="print-button" id="print-page" type="button" aria-label="打印当前页面">
+          <span aria-hidden="true">▣</span> 打印页面
+        </button>
+      </div>
 
-      <section class="postcard-grid" aria-label="赠品明信片款式">
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%201.png" alt="明信片 1" />
-          </div>
-          <h2>明信片 1</h2>
-        </article>
+      <div class="shipping-layout">
+        <section class="order-column" aria-label="本期集运详情">
+          <article class="shipment-summary">
+            <div class="parcel-icon" aria-hidden="true">▦</div>
+            <div>
+              <p class="status-kicker">运输中</p>
+              <h2>本期法国车模集运</h2>
+              <p class="summary-copy">已完成法国本地收货与加固，正在等待航班安排。</p>
+              <a href="#tracking">查看追踪信息</a>
+            </div>
+          </article>
 
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%202.png" alt="明信片 2" />
-          </div>
-          <h2>明信片 2</h2>
-        </article>
+          <article class="detail-card">
+            <p class="notice"><span aria-hidden="true">i</span> 本期包裹已完成集货，物流状态会在节点更新后同步。</p>
 
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%203.png" alt="明信片 3" />
-          </div>
-          <h2>明信片 3</h2>
-        </article>
+            <div class="order-details">
+              <h2>批次详情</h2>
+              <dl>
+                <div><dt>创建时间</dt><dd>2026 年 8 月 14 日</dd></div>
+                <div><dt>批次编号</dt><dd>FR-CAR-202608-01</dd></div>
+                <div><dt>运输方式</dt><dd>法国集货 · 空运转运</dd></div>
+                <div><dt>当前状态</dt><dd class="emphasis">等待航班安排</dd></div>
+              </dl>
+            </div>
 
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%205.png" alt="明信片 5" />
-          </div>
-          <h2>明信片 5</h2>
-        </article>
+            <section class="progress-section" aria-labelledby="progress-title">
+              <h2 id="progress-title">运输进度</h2>
+              <p>下一次更新：包裹起飞或抵达国内分拨中心后。</p>
+              <ol class="progress-steps">
+                <li class="complete"><span>✓</span><strong>已付款</strong><small>8 月 14 日</small></li>
+                <li class="complete"><span>✓</span><strong>法国集货完成</strong><small>8 月 18 日</small></li>
+                <li class="active"><span>3</span><strong>等待航班</strong><small>当前</small></li>
+                <li><span>4</span><strong>国内清关</strong><small>待更新</small></li>
+                <li><span>5</span><strong>国内派送</strong><small>待更新</small></li>
+              </ol>
+            </section>
 
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%206.png" alt="明信片 6 正面" />
-          </div>
-          <h2>明信片 6 正面</h2>
-        </article>
+            <section class="tracking" id="tracking" aria-labelledby="tracking-title">
+              <h2 id="tracking-title">追踪信息</h2>
+              <dl>
+                <div><dt>物流单号</dt><dd>待航班起运后生成</dd></div>
+                <div><dt>最近更新</dt><dd>法国仓已封箱，等待空运排仓</dd></div>
+              </dl>
+            </section>
+          </article>
+        </section>
 
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%206%20%E5%8F%8D.png" alt="明信片 6 反面" />
-          </div>
-          <h2>明信片 6 反面</h2>
-        </article>
+        <aside class="side-column">
+          <section class="side-section">
+            <h2>收货与派送</h2>
+            <p>国内清关完成后，将按订单登记的收货地址安排快递派送。</p>
+            <a href="mailto:577990122@qq.com">地址有变？联系确认</a>
+          </section>
 
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%207.png" alt="明信片 7 正面" />
-          </div>
-          <h2>明信片 7 正面</h2>
-        </article>
+          <section class="side-section shipping-fee">
+            <h2>本期说明</h2>
+            <div><span>法国本地集货</span><strong>已完成</strong></div>
+            <div><span>国际转运</span><strong>进行中</strong></div>
+            <div><span>国内派送</span><strong>到付 / 以通知为准</strong></div>
+          </section>
 
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%207%20%E5%8F%8D.png" alt="明信片 7 反面" />
-          </div>
-          <h2>明信片 7 反面</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%208.png" alt="明信片 8 正面" />
-          </div>
-          <h2>明信片 8 正面</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%208%20%E5%8F%8D.png" alt="明信片 8 反面" />
-          </div>
-          <h2>明信片 8 反面</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%209.png" alt="明信片 9" />
-          </div>
-          <h2>明信片 9 正面</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%209%20%E5%8F%8D.png" alt="明信片 9 反面" />
-          </div>
-          <h2>明信片 9 反面</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%2010.png" alt="明信片 10 正面" />
-          </div>
-          <h2>明信片 10 正面</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%98%8E%E4%BF%A1%E7%89%87%2010%20%E5%8F%8D.png" alt="明信片 10 反面" />
-          </div>
-          <h2>明信片 10 反面</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%B5%B7%E6%8A%A5%201%20A4.png" alt="海报 1 A4" />
-          </div>
-          <h2>海报 1 A4</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%B5%B7%E6%8A%A5%202%20A4.png" alt="海报 2 A4" />
-          </div>
-          <h2>海报 2 A4</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%B5%B7%E6%8A%A5%203%20A4.png" alt="海报 3 A4" />
-          </div>
-          <h2>海报 3 A4</h2>
-        </article>
-
-        <article>
-          <div class="image-frame">
-            <img src="./ai/%E6%B5%B7%E6%8A%A5%205%20A4.png" alt="海报 5 A4" />
-          </div>
-          <h2>海报 5 A4</h2>
-        </article>
-      </section>
+          <section class="side-section help-section">
+            <h2>需要帮助？</h2>
+            <p>如需确认车型、合箱状态或收货信息，请通过邮件联系。</p>
+            <a href="mailto:577990122@qq.com">577990122@qq.com</a>
+          </section>
+        </aside>
+      </div>
     </main>
+    <script src="./logistics.js" type="module"></script>
   </body>
 </html>
