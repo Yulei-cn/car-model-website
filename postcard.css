@@ -27,7 +27,7 @@ h3 { margin: 24px 0 16px; font-size: 15px; }
 .shipping-layout { display: grid; grid-template-columns: minmax(0, 820px) 340px; gap: 60px; align-items: start; }
 .order-column { display: grid; gap: 25px; }
 .shipment-summary { display: flex; align-items: center; min-height: 168px; gap: 20px; padding: 28px; border-radius: 8px; background: var(--surface); }
-.parcel-thumb { display: grid; flex: 0 0 64px; width: 64px; height: 64px; place-items: center; border-radius: 2px; background: linear-gradient(135deg, #627485, #b98956); color: #fff; font-size: 30px; }
+.parcel-thumb { display: block; flex: 0 0 64px; width: 64px; height: 64px; border-radius: 2px; object-fit: cover; }
 .status-kicker { margin-bottom: 13px; font-size: 11px; font-weight: 400; }
 .shipment-summary h2 { margin-bottom: 10px; font-size: 15px; font-weight: 700; }
 .summary-copy { margin-bottom: 10px; font-size: 15px; }
@@ -48,7 +48,6 @@ dd { margin: 0; font-size: 14px; }
 .progress-steps { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0 4px; margin: 0; list-style: none; }
 .progress-steps li { position: relative; display: grid; gap: 6px; min-width: 0; }
 .progress-steps li:not(:last-child)::after { position: absolute; z-index: 0; top: 11px; left: 23px; width: calc(100% - 23px); height: 4px; background: #c5c5c5; content: ""; }
-.progress-steps li.complete:not(:last-child)::after { background: var(--blue); }
 .progress-steps span { position: relative; z-index: 1; width: 23px; height: 23px; border: 2px solid #96999d; border-radius: 50%; background: #fff; }
 .progress-steps .complete span, .progress-steps .active span { border-color: var(--blue); background: var(--blue); }
 .progress-steps .complete span { display: grid; place-items: center; color: #fff; font-size: 13px; font-weight: 700; }
@@ -92,7 +91,7 @@ dd { margin: 0; font-size: 14px; }
   .print-button { padding: 11px 13px; font-size: 12px; }
   .print-button span { font-size: 16px; }
   .shipment-summary { align-items: flex-start; padding: 20px; }
-  .parcel-thumb { flex-basis: 45px; width: 45px; height: 45px; font-size: 22px; }
+  .parcel-thumb { flex-basis: 45px; width: 45px; height: 45px; }
   .detail-card { padding: 16px; }
   .notice { align-items: flex-start; padding: 14px; }
   dl div { grid-template-columns: 118px minmax(0, 1fr); gap: 10px; }
