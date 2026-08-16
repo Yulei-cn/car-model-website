@@ -1,94 +1,87 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>物流进程 | 法国车模代购</title>
-    <meta name="description" content="查看法国车模集运批次的当前物流进程和配送说明。" />
+    <title>Détails de la commande | France Model Cars</title>
+    <meta name="description" content="Consultez les détails de votre commande de voiture miniature." />
     <link rel="stylesheet" href="./postcard.css" />
   </head>
   <body>
-    <header class="topbar">
-      <a href="./index.html">车模网站</a>
-      <span>物流进程</span>
-    </header>
-
     <main>
       <div class="page-heading">
-        <div>
-          <p class="eyebrow">Shipping details</p>
-          <h1>物流进程</h1>
-        </div>
-        <button class="print-button" id="print-page" type="button" aria-label="打印当前页面">
-          <span aria-hidden="true">▣</span> 打印页面
+        <h1>Détails de la commande</h1>
+        <button class="print-button" id="print-page" type="button" aria-label="Imprimer cette page">
+          <span aria-hidden="true">▣</span> Page imprimable
         </button>
       </div>
 
       <div class="shipping-layout">
-        <section class="order-column" aria-label="本期集运详情">
+        <section class="order-column" aria-label="Détails de la commande">
           <article class="shipment-summary">
-            <div class="parcel-icon" aria-hidden="true">▦</div>
+            <div class="parcel-thumb" aria-hidden="true">▦</div>
             <div>
-              <p class="status-kicker">运输中</p>
-              <h2>本期法国车模集运</h2>
-              <p class="summary-copy">已完成法国本地收货与加固，正在等待航班安排。</p>
-              <a href="#tracking">查看追踪信息</a>
+              <p class="status-kicker">ENVOYÉ</p>
+              <h2>Livraison avant le ven. 21 août 10:07</h2>
+              <p class="summary-copy">Norev 1/18 Concept Car CITROËN C-metiss</p>
+              <a href="#tracking">Suivre le colis</a>
             </div>
           </article>
 
           <article class="detail-card">
-            <p class="notice"><span aria-hidden="true">i</span> 本期包裹已完成集货，物流状态会在节点更新后同步。</p>
+            <p class="notice"><span aria-hidden="true">i</span> Le vendeur a envoyé la commande.</p>
 
             <div class="order-details">
-              <h2>批次详情</h2>
+              <h2>Détails de la commande</h2>
               <dl>
-                <div><dt>创建时间</dt><dd>2026 年 8 月 14 日</dd></div>
-                <div><dt>批次编号</dt><dd>FR-CAR-202608-01</dd></div>
-                <div><dt>运输方式</dt><dd>法国集货 · 空运转运</dd></div>
-                <div><dt>当前状态</dt><dd class="emphasis">等待航班安排</dd></div>
+                <div><dt>Passée le</dt><dd>12 août 2026 à 3:58 PM</dd></div>
+                <div><dt>N° de commande</dt><dd>05-15031-60965</dd></div>
+                <div><dt>Total</dt><dd>39,61 EUR (1 objet)</dd></div>
+                <div><dt>Vendu par</dt><dd><a href="mailto:577990122@qq.com">zhu</a></dd></div>
               </dl>
             </div>
 
             <section class="progress-section" aria-labelledby="progress-title">
-              <h2 id="progress-title">运输进度</h2>
-              <p>下一次更新：包裹起飞或抵达国内分拨中心后。</p>
+              <h2 id="progress-title">Informations sur la livraison</h2>
+              <p>Nous vous enverrons un message le ven. 21 août, lorsque la commande sera prête.</p>
               <ol class="progress-steps">
-                <li class="complete"><span>✓</span><strong>已付款</strong><small>8 月 14 日</small></li>
-                <li class="complete"><span>✓</span><strong>法国集货完成</strong><small>8 月 18 日</small></li>
-                <li class="active"><span>3</span><strong>等待航班</strong><small>当前</small></li>
-                <li><span>4</span><strong>国内清关</strong><small>待更新</small></li>
-                <li><span>5</span><strong>国内派送</strong><small>待更新</small></li>
+                <li class="complete"><span>✓</span><strong>Payé</strong><small>12 août</small></li>
+                <li class="complete"><span>✓</span><strong>Informations de suivi disponibles</strong><small>12 août</small></li>
+                <li class="active"><span></span><strong>Prêt</strong><small>À venir</small></li>
+                <li><span></span><strong>Retiré</strong><small>À venir</small></li>
               </ol>
             </section>
 
             <section class="tracking" id="tracking" aria-labelledby="tracking-title">
-              <h2 id="tracking-title">追踪信息</h2>
+              <h2 id="tracking-title">Informations de suivi</h2>
               <dl>
-                <div><dt>物流单号</dt><dd>待航班起运后生成</dd></div>
-                <div><dt>最近更新</dt><dd>法国仓已封箱，等待空运排仓</dd></div>
+                <div><dt>Numéro</dt><dd>3470206281</dd></div>
+                <div><dt>Produit</dt><dd>Norev 1/18 Concept Car CITROËN C-metiss</dd></div>
               </dl>
             </section>
           </article>
         </section>
 
         <aside class="side-column">
-          <section class="side-section">
-            <h2>收货与派送</h2>
-            <p>国内清关完成后，将按订单登记的收货地址安排快递派送。</p>
-            <a href="mailto:577990122@qq.com">地址有变？联系确认</a>
+          <section class="side-section pickup-section">
+            <h2>Adresse pour le retrait de la commande</h2>
+            <p>YULEI ZHU<br><br>STIE - #FR21927, 114 BOULEVARD VICTOR HUGO<br>CLICHY 92110<br><br>France métropolitaine</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=114%20Boulevard%20Victor%20Hugo%2C%2092110%20Clichy" target="_blank" rel="noreferrer">Recevoir l'itinéraire à suivre</a>
+            <h3>Horaires d'ouverture</h3>
+            <p>Aujourd'hui, ouvert jusqu'à <strong>6:30 pm</strong></p>
           </section>
 
           <section class="side-section shipping-fee">
-            <h2>本期说明</h2>
-            <div><span>法国本地集货</span><strong>已完成</strong></div>
-            <div><span>国际转运</span><strong>进行中</strong></div>
-            <div><span>国内派送</span><strong>到付 / 以通知为准</strong></div>
+            <h2>Informations de paiement</h2>
+            <div class="payment-card"><span class="card-logo">CB</span><span>Carte bancaire se terminant par 2193<br><small>YULEI ZHU</small></span><strong>39,61 EUR<br><small>12 août à 3:58 PM</small></strong></div>
+            <div><span>1 objet</span><strong>35,11 EUR</strong></div>
+            <div><span>Livraison</span><strong>4,50 EUR</strong></div>
+            <div class="order-total"><span>Total de la commande</span><strong>39,61 EUR</strong></div>
           </section>
 
           <section class="side-section help-section">
-            <h2>需要帮助？</h2>
-            <p>如需确认车型、合箱状态或收货信息，请通过邮件联系。</p>
-            <a href="mailto:577990122@qq.com">577990122@qq.com</a>
+            <p>Que pensez-vous de la page Détails de la commande ?</p>
+            <a href="mailto:577990122@qq.com">Donnez votre avis</a>
           </section>
         </aside>
       </div>
