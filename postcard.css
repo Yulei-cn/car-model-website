@@ -37,6 +37,7 @@ h3 { margin: 24px 0 16px; font-size: 15px; }
 .notice { display: flex; align-items: center; gap: 14px; margin-bottom: 19px; padding: 17px 18px; border-radius: 8px; background: var(--surface); font-size: 15px; }
 .notice span { display: grid; width: 17px; height: 17px; flex: 0 0 17px; place-items: center; border-radius: 50%; background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; }
 .order-details, .progress-section { padding: 0 0 27px; margin-bottom: 27px; border-bottom: 1px solid var(--line); }
+.tracking { padding-bottom: 27px; margin-bottom: 27px; border-bottom: 1px solid var(--line); }
 .order-details h2, .progress-section h2, .tracking h2 { margin-bottom: 19px; }
 dl { display: grid; gap: 15px; margin: 0; }
 dl div { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px; }
@@ -52,7 +53,16 @@ dd { margin: 0; font-size: 14px; }
 .progress-steps .complete span, .progress-steps .active span { border-color: var(--blue); background: var(--blue); }
 .progress-steps .complete span { display: grid; place-items: center; color: #fff; font-size: 13px; font-weight: 700; }
 .progress-steps strong { max-width: 125px; font-size: 13px; line-height: 1.25; }
-.progress-steps small { color: var(--muted); font-size: 12px; }
+.progress-steps small { max-width: 135px; color: var(--muted); font-size: 12px; line-height: 1.35; }
+
+.item-information h2 { margin-bottom: 19px; }
+.item-content { display: flex; align-items: flex-start; gap: 18px; }
+.item-content img { display: block; width: 118px; aspect-ratio: 1; border-radius: 4px; object-fit: cover; }
+.item-description h3 { margin: 0 0 12px; font-size: 15px; line-height: 1.35; }
+.item-description p { margin: 0 0 9px; font-size: 14px; line-height: 1.45; }
+.item-description p:first-of-type { display: flex; flex-wrap: wrap; gap: 8px; }
+.item-description p:first-of-type span { color: var(--muted); }
+.estimated-arrival { color: var(--green); font-weight: 700; }
 
 .side-column { display: grid; gap: 55px; padding-top: 0; }
 .side-section h2 { margin-bottom: 23px; }
@@ -90,6 +100,7 @@ dd { margin: 0; font-size: 14px; }
   .progress-steps li { grid-template-columns: 23px minmax(0, 1fr); column-gap: 10px; }
   .progress-steps li::after { top: 23px !important; left: 10px !important; width: 3px !important; height: calc(100% - 8px) !important; }
   .progress-steps strong, .progress-steps small { grid-column: 2; }
+  .item-content img { width: 92px; }
 }
 
 @media print {
