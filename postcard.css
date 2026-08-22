@@ -14,7 +14,10 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: #fff; color: var(--ink); }
 a { color: inherit; }
 
-main { width: min(1220px, calc(100% - 48px)); margin: 0 auto; padding: 31px 0 80px; }
+.order-nav { display: flex; align-items: center; gap: 5px; width: min(1220px, calc(100% - 48px)); margin: 20px auto 0; }
+.order-nav a { padding: 8px 12px; border-radius: 999px; color: var(--muted); font-size: 13px; font-weight: 700; text-decoration: none; }
+.order-nav a:hover, .order-nav a.active { background: var(--surface); color: var(--ink); }
+main { width: min(1220px, calc(100% - 48px)); margin: 0 auto; padding: 23px 0 80px; }
 h1, h2, p { margin-top: 0; }
 h1 { margin-bottom: 0; font-size: 30px; line-height: 1.1; letter-spacing: -.8px; }
 h2 { margin: 0; font-size: 20px; line-height: 1.18; letter-spacing: -.3px; }
@@ -63,6 +66,16 @@ dd { margin: 0; font-size: 14px; }
 .item-description p:first-of-type span { color: var(--muted); }
 .estimated-arrival { color: var(--green); font-weight: 700; }
 
+.proof-section { padding-top: 27px; margin-top: 27px; border-top: 1px solid var(--line); }
+.proof-section > div:first-child { display: flex; justify-content: space-between; gap: 18px; }
+.proof-section h2 { margin-bottom: 8px; }
+.proof-section p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
+.proof-section .proof-date { margin: 12px 0 16px; color: var(--ink); font-weight: 700; }
+.proof-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.proof-gallery a { display: block; overflow: hidden; border-radius: 4px; background: var(--surface); }
+.proof-gallery img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .2s ease; }
+.proof-gallery a:hover img { transform: scale(1.04); }
+
 .side-column { display: grid; gap: 55px; padding-top: 0; }
 .side-section h2 { margin-bottom: 23px; }
 .side-section p { margin-bottom: 10px; font-size: 15px; line-height: 1.55; }
@@ -80,7 +93,8 @@ dd { margin: 0; font-size: 14px; }
 .help-section { margin-top: -17px; }
 
 @media (max-width: 900px) {
-  main { width: min(720px, calc(100% - 32px)); padding-top: 25px; }
+  .order-nav { width: min(720px, calc(100% - 32px)); margin-top: 14px; }
+  main { width: min(720px, calc(100% - 32px)); padding-top: 20px; }
   .page-heading { margin-bottom: 35px; }
   .shipping-layout { grid-template-columns: 1fr; gap: 42px; }
   .side-column { gap: 32px; }
@@ -100,9 +114,11 @@ dd { margin: 0; font-size: 14px; }
   .progress-steps li::after { top: 23px !important; left: 10px !important; width: 3px !important; height: calc(100% - 8px) !important; }
   .progress-steps strong, .progress-steps small { grid-column: 2; }
   .item-content img { width: 92px; }
+  .proof-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media print {
+  .order-nav { display: none; }
   main { width: 100%; padding: 0; }
   .print-button { display: none; }
   .page-heading { margin-bottom: 25px; }
