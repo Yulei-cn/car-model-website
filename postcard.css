@@ -51,6 +51,7 @@ dd { margin: 0; font-size: 14px; }
 .progress-steps { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0 4px; margin: 0; list-style: none; }
 .progress-steps li { position: relative; display: grid; gap: 6px; min-width: 0; }
 .progress-steps li:not(:last-child)::after { position: absolute; z-index: 0; top: 11px; left: 23px; width: calc(100% - 23px); height: 4px; background: #c5c5c5; content: ""; }
+.progress-steps li.connector-complete::after { background: var(--blue); }
 .progress-steps span { position: relative; z-index: 1; width: 23px; height: 23px; border: 2px solid #96999d; border-radius: 50%; background: #fff; }
 .progress-steps .complete span, .progress-steps .active span { border-color: var(--blue); background: var(--blue); }
 .progress-steps .complete span { display: grid; place-items: center; color: #fff; font-size: 13px; font-weight: 700; }
