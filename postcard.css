@@ -50,7 +50,6 @@ dl div { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px; 
 dt { color: var(--muted); font-size: 14px; }
 dd { margin: 0; font-size: 14px; }
 .progress-section > p { margin-bottom: 18px; color: var(--green); font-size: 16px; line-height: 1.4; }
-.progress-section > p.delay-copy { color: #9d2020; }
 
 .progress-steps { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0 4px; margin: 0; list-style: none; }
 .progress-steps li { position: relative; display: grid; gap: 6px; min-width: 0; }
