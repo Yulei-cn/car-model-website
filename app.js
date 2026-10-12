@@ -22,65 +22,35 @@ document.querySelector("#year").textContent = new Date().getFullYear();
 const config = {
   currentShipping: [
     {
-      title: "已完成准备",
-      date: "4月 - 5月中旬",
-      text: "确认采购清单、价格、车况和卖家，完成本期集中采购准备。",
-      start: "2026-04-01",
-      end: "2026-05-15",
+      title: "11月集运准备",
+      date: "2026年11月",
+      text: "收集意向车型、预算、比例和颜色，确认本期采购清单。",
+      progress: 0,
+    },
+    {
+      title: "采购与集中收货",
+      date: "11月起至封箱前",
+      text: "按确认清单采购，陆续收货并核对车况、拍照留档。",
+      progress: 0,
     },
     {
       title: "结单与封箱",
-      date: "5月16日 - 5月28日",
-      text: "完成付款确认、拍照留档、合箱加固和转运资料整理。",
-      start: "2026-05-16",
-      end: "2026-05-28",
+      date: "2026年12月 · 圣诞节前",
+      text: "计划在圣诞节前完成付款核对、合箱加固和封箱，具体截止日期另行通知。",
+      progress: 0,
     },
     {
-      title: "封箱转运",
-      date: "5月29日",
-      text: "本期包裹封箱并开始转运，后续以物流和清关实际状态为准。",
-      start: "2026-05-29",
-      end: "2026-05-29",
-    },
-    {
-      title: "预计配送",
-      date: "6月第一周",
-      text: "预计到中国、完成海关查验并出关，第一周内开始陆续国内配送。",
-      start: "2026-06-01",
-      end: "2026-06-07",
+      title: "转运与配送",
+      date: "封箱后 · 时间待确认",
+      text: "封箱后安排转运，到货、清关及国内配送时间以实际物流进度为准。",
+      progress: 0,
     },
   ],
-  nextShipping: [
-    {
-      title: "下期准备",
-      date: "6月",
-      text: "收集意向车型、预算、比例、颜色和是否接受无盒等偏好。",
-    },
-    {
-      title: "集中采买",
-      date: "7月",
-      text: "开始集中寻找和采买，具体结单日期按实际库存和卖家情况确定。",
-    },
-    {
-      title: "转运封箱",
-      date: "8月",
-      text: "预计完成合箱加固并安排转运，具体日期后续更新。",
-    },
-  ],
+  nextShipping: [],
 };
 
-function toDate(value) {
-  return new Date(`${value}T00:00:00`);
-}
-
-function getStageProgress(item, today) {
-  const start = toDate(item.start);
-  const end = toDate(item.end);
-  const day = 24 * 60 * 60 * 1000;
-  const adjustedEnd = new Date(end.getTime() + day);
-  if (today >= adjustedEnd) return 100;
-  if (today < start) return 0;
-  return Math.round(((today - start) / (adjustedEnd - start)) * 100);
+function getStageProgress(item) {
+  return item.progress;
 }
 
 function getStageState(progress) {
@@ -133,7 +103,7 @@ function renderTimeline() {
     )
     .join("");
 
-  timeline.innerHTML = `${current}<li class="timeline-divider">下期集运预告</li>${next}`;
+  timeline.innerHTML = `${current}${next ? '<li class="timeline-divider">下期集运预告</li>' + next : ""}`;
 }
 
 function updateGallery() {
