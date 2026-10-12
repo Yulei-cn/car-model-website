@@ -6,7 +6,7 @@ module.exports = handler(async (req, res) => {
     const offset = Math.max(0, Math.min(100000, Number.parseInt(req.query.offset, 10) || 0));
     const [watches, items, runs] = await Promise.all([
       db('finder_watches?order=created_at.asc'),
-      db(`finder_items?order=first_seen_at.desc,id.desc&limit=100&offset=${offset}`),
+      db(`finder_items?match=neq.excluded&order=first_seen_at.desc,id.desc&limit=100&offset=${offset}`),
       db('finder_runs?order=started_at.desc&limit=5')
     ]);
     return res.status(200).json({ watches, items, runs, offset, hasMore: items.length === 100 });

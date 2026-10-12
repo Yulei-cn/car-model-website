@@ -41,6 +41,37 @@ test('API blocks unauthenticated access without touching the database', async ()
   assert.equal(response.code, 401);
   if (previous === undefined) delete process.env.FINDER_ADMIN_SECRET; else process.env.FINDER_ADMIN_SECRET = previous;
 });
+test('search restricts France and persists only local non-excluded items', async () => {
+  const originalFetch = global.fetch;
+  const keys = ['SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY', 'EBAY_CLIENT_ID', 'EBAY_CLIENT_SECRET'];
+  const previous = keys.map(key => process.env[key]);
+  keys.forEach(key => { process.env[key] = key === 'SUPABASE_URL' ? 'https://test.invalid' : 'test'; });
+  let stored;
+  global.fetch = async (url, options = {}) => {
+    let result = null;
+    if (url.includes('finder_claim_run')) result = 'test-run';
+    else if (url.includes('finder_watches?enabled')) result = [{ id: 'test-watch', query: 'Norev', color: 'white' }];
+    else if (url.includes('oauth2/token')) result = { access_token: 'test-token', expires_in: 7200 };
+    else if (url.includes('item_summary/search')) {
+      assert.match(new URL(url).searchParams.get('filter'), /itemLocationCountry:FR/);
+      result = { itemSummaries: [
+        { itemId: 'fr-white', title: 'Norev 1/18 blanc', itemLocation: { country: 'FR' } },
+        { itemId: 'fr-blue', title: 'Norev 1/18 bleu', itemLocation: { country: 'FR' } },
+        { itemId: 'it-white', title: 'Norev 1/18 blanc', itemLocation: { country: 'IT' } },
+        { itemId: 'unknown', title: 'Norev 1/18 blanc' }
+      ] };
+    } else if (url.includes('finder_save_results')) { stored = JSON.parse(options.body).records; result = stored.length; }
+    return new Response(JSON.stringify(result), { status: 200 });
+  };
+  try {
+    const result = await require('../lib/finder.cjs').runSearch();
+    assert.equal(result.saved, 1);
+    assert.deepEqual(stored.map(item => item.item_id), ['fr-white']);
+  } finally {
+    global.fetch = originalFetch;
+    keys.forEach((key, i) => { if (previous[i] === undefined) delete process.env[key]; else process.env[key] = previous[i]; });
+  }
+});
 test('Postgres schema: idempotent seed, dedupe, preserve read status, lock and access isolation', async () => {
   const db = new PGlite();
   try {

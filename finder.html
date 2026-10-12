@@ -21,7 +21,7 @@
       <div class="finder-toolbar"><div><strong id="run-status">尚未运行</strong><p class="hint">每天自动搜索；更高频率需配置额外定时任务。首次搜索也会保存当前在售商品。</p></div><div class="finder-actions"><button id="refresh" class="button secondary">刷新记录</button><button id="run" class="button primary">立即搜索并保存</button><button id="logout" class="text-button">退出</button></div></div>
       <div class="finder-layout">
         <aside>
-          <section class="finder-panel"><h2>关注清单 <span id="watch-count"></span></h2><div id="watches"></div></section>
+          <section class="finder-panel"><h2>关注清单 <span id="watch-count"></span></h2><p class="hint">仅搜商品所在地为法国的商品；不符合条件的结果直接丢弃。</p><div id="watches"></div></section>
           <form id="watch-form" class="finder-panel"><h2>添加关注</h2>
             <label>显示名称<input name="name" maxlength="100" placeholder="例如 Peugeot 207 CC 白色" required></label>
             <label>eBay 搜索词<input name="query" maxlength="120" placeholder="Peugeot 207 CC Norev 1/18" required></label>
@@ -30,7 +30,7 @@
             <button class="button primary" type="submit">保存关注</button>
           </form>
         </aside>
-        <section class="finder-panel results-panel"><div class="results-heading"><h2>搜集记录</h2><label class="filter-label">筛选<select id="filter"><option value="all">全部记录</option><option value="new">未读发现</option><option value="match">条件符合</option><option value="review">待确认</option><option value="excluded">已排除</option></select></label></div>
+        <section class="finder-panel results-panel"><div class="results-heading"><h2>搜集记录</h2><label class="filter-label">筛选<select id="filter"><option value="all">全部记录</option><option value="new">未读发现</option><option value="match">条件符合</option><option value="review">待确认</option></select></label></div>
           <p class="hint">“新”表示首次被本工具发现，不一定刚上架。记录价格为最近搜索时的价格，实际库存和运费以 eBay 为准。</p>
           <div id="results"></div><button id="more" class="button secondary" hidden>加载更多记录</button>
         </section>
