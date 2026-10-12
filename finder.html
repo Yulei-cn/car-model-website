@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>车模搜索器 | 法国车模收藏</title>
+  <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./finder.css">
+  <script src="./finder.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><nav class="nav"><a class="brand" href="./index.html">车模网站</a><div class="nav-links"><a href="./index.html#catalog">现有模型</a><a href="./finder.html" aria-current="page">车模搜索器</a></div></nav></header>
+  <main class="finder-shell">
+    <div class="finder-heading"><div><p class="eyebrow">Collection watchlist · eBay France</p><h1>让想找的车，有迹可循。</h1><p>保存关注条件，定时搜集 eBay 商品，集中查看新发现。</p></div><span class="finder-chip">私人管理</span></div>
+    <p id="message" role="status" aria-live="polite">请输入管理密码，连接你的搜索清单。</p>
+    <form id="login-form" class="finder-panel login-panel">
+      <label>管理密码<input id="password" type="password" autocomplete="current-password" required></label>
+      <button class="button primary" type="submit">打开搜索器</button>
+      <p class="hint">密码仅保留在当前页面内存中，刷新或关闭页面后需要重新输入。</p>
+    </form>
+    <div id="workspace" hidden>
+      <div class="finder-toolbar"><div><strong id="run-status">尚未运行</strong><p class="hint">每天自动搜索；更高频率需配置额外定时任务。首次搜索也会保存当前在售商品。</p></div><div class="finder-actions"><button id="refresh" class="button secondary">刷新记录</button><button id="run" class="button primary">立即搜索并保存</button><button id="logout" class="text-button">退出</button></div></div>
+      <div class="finder-layout">
+        <aside>
+          <section class="finder-panel"><h2>关注清单 <span id="watch-count"></span></h2><div id="watches"></div></section>
+          <form id="watch-form" class="finder-panel"><h2>添加关注</h2>
+            <label>显示名称<input name="name" maxlength="100" placeholder="例如 Peugeot 207 CC 白色" required></label>
+            <label>eBay 搜索词<input name="query" maxlength="120" placeholder="Peugeot 207 CC Norev 1/18" required></label>
+            <div class="form-pair"><label>目标颜色<select name="color"><option value="">不限</option><option value="white">白色</option><option value="blue">蓝色</option></select></label><label>最高商品价 €<input name="max_price" type="number" min="0.01" max="100000" step="0.01" placeholder="不限"></label></div>
+            <p class="hint">价格不含运费。颜色只用于标题判断，无法确认的商品保留在“待确认”。最多 10 个条件。</p>
+            <button class="button primary" type="submit">保存关注</button>
+          </form>
+        </aside>
+        <section class="finder-panel results-panel"><div class="results-heading"><h2>搜集记录</h2><label class="filter-label">筛选<select id="filter"><option value="all">全部记录</option><option value="new">未读发现</option><option value="match">条件符合</option><option value="review">待确认</option><option value="excluded">已排除</option></select></label></div>
+          <p class="hint">“新”表示首次被本工具发现，不一定刚上架。记录价格为最近搜索时的价格，实际库存和运费以 eBay 为准。</p>
+          <div id="results"></div><button id="more" class="button secondary" hidden>加载更多记录</button>
+        </section>
+      </div>
+    </div>
+    <p class="finder-footnote">当前接入 eBay 法国站。leboncoin 和邮件 / 手机推送尚未接入。</p>
+  </main>
+</body>
+</html>

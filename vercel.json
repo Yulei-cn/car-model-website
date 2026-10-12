@@ -1,4 +1,6 @@
 {
+  "functions": { "api/*.js": { "maxDuration": 60 } },
+  "crons": [{ "path": "/api/finder-cron", "schedule": "0 6 * * *" }],
   "headers": [
     {
       "source": "/(.*)",

@@ -3,4 +3,6 @@
 海报A6/**
 AI生成关键词.txt
 docs/**
+tests/**
+.env*
 成品/**
