@@ -101,6 +101,24 @@ test('Postgres schema: idempotent seed, dedupe, preserve read status, lock and a
     assert.equal((await save()).rows[0].added, 0);
     const row = (await db.query('select * from finder_items')).rows[0];
     assert.equal(Number(row.price), 75); assert.equal(row.seen, true); assert.deepEqual(row.first_seen_at, before);
+    const snapshot = () => JSON.stringify({title:item.title,price:item.price,currency:item.currency,buying_options:item.buying_options});
+    assert.equal((await db.query('select finder_dismiss_item($1, $2::jsonb) as ok', [row.id, snapshot()])).rows[0].ok, true);
+    item.last_seen_at = '2026-10-20T10:00:00Z';
+    item.url = 'https://www.ebay.fr/itm/1?tracking=changed';
+    await save();
+    let current = (await db.query('select * from finder_items')).rows[0];
+    assert.ok(current.dismissed_snapshot); assert.equal(current.reopened_at, null);
+    assert.equal((await db.query('select count(*)::int as count from finder_items where dismissed_snapshot is null')).rows[0].count, 0);
+    item.price = 70;
+    await save();
+    current = (await db.query('select * from finder_items')).rows[0];
+    assert.equal(current.dismissed_snapshot, null); assert.equal(current.seen, false); assert.ok(current.reopened_at);
+    assert.deepEqual(current.first_seen_at, before);
+    const oldSnapshot = snapshot();
+    assert.equal((await db.query('select finder_dismiss_item($1, $2::jsonb) as ok', [row.id, oldSnapshot])).rows[0].ok, true);
+    item.title += ' updated'; await save();
+    assert.equal((await db.query('select dismissed_snapshot from finder_items')).rows[0].dismissed_snapshot, null);
+    assert.equal((await db.query('select finder_dismiss_item($1, $2::jsonb) as ok', [row.id, oldSnapshot])).rows[0].ok, false);
     assert.ok((await db.query('select finder_claim_run() as id')).rows[0].id);
     assert.equal((await db.query('select finder_claim_run() as id')).rows[0].id, null);
     for (let i = 0; i < 7; i++) assert.ok((await db.query('select finder_add_watch($1::jsonb) as id', [JSON.stringify({ name: `test${i}`, query: 'Norev' })])).rows[0].id);
@@ -108,5 +126,6 @@ test('Postgres schema: idempotent seed, dedupe, preserve read status, lock and a
     await db.exec('reset role; set role anon;');
     await assert.rejects(db.query('select * from finder_items'), /permission denied/);
     await assert.rejects(db.query('select finder_claim_run()'), /permission denied/);
+    await assert.rejects(db.query('select finder_dismiss_item($1, $2::jsonb)', [row.id, snapshot()]), /permission denied/);
   } finally { await db.close(); }
 });

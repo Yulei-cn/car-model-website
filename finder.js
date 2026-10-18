@@ -41,12 +41,12 @@
   function renderItems() {
     $('results').replaceChildren();
     const filter = $('filter').value;
-    const items = state.items.filter(item => filter === 'all' || (filter === 'new' ? !item.seen : item.match === filter));
+    const items = state.items.filter(item => !item.dismissed_snapshot && (filter === 'all' || (filter === 'new' ? !item.seen : item.match === filter)));
     if (!items.length) $('results').append(el('p', state.items.length ? '已加载记录中没有此类商品，可切换筛选或加载更多。' : '还没有搜集记录。添加关注并运行搜索后，结果会保存在这里。', 'empty'));
     for (const item of items) {
       const row = el('article', null, 'result-card'), meta = el('div', null, 'result-meta');
       meta.append(el('span', ({ match: '条件符合', review: '待确认', excluded: '已排除' })[item.match], `badge ${item.match}`));
-      if (!item.seen) meta.append(el('span', '新发现', 'badge new'));
+      if (!item.seen) meta.append(el('span', item.reopened_at ? '商品已更新' : '新发现', 'badge new'));
       meta.append(el('span', state.watches.find(w => w.id === item.watch_id)?.name || '', 'hint'));
       const heading = el('h3');
       let safe = false;
@@ -56,6 +56,16 @@
       bottom.append(el('span', item.price == null ? '价格待确认' : `${item.currency || ''} ${Number(item.price).toFixed(2)}`, 'result-price'));
       if ((item.buying_options || []).includes('AUCTION')) bottom.append(el('span', '含拍卖选项', 'hint'));
       if (!item.seen) bottom.append(action('标为已读', async () => { await api({ action: 'seen', id: item.id }); item.seen = true; renderItems(); }));
+      const dismissButton = action('不符合要求', async () => {
+        const snapshot = { title: item.title, price: item.price, currency: item.currency, buying_options: [...(item.buying_options || [])].sort() };
+        await api({ action: 'dismiss', id: item.id, snapshot });
+        item.dismissed_snapshot = snapshot;
+        renderItems();
+        message('已隐藏。重复搜索不会再显示；标题、价格、币种或购买方式变化后，会重新显示为“商品已更新”。');
+      });
+      dismissButton.disabled = !state.dismissEnabled;
+      if (!state.dismissEnabled) dismissButton.title = '请先执行隐藏功能的数据库更新脚本';
+      bottom.append(dismissButton);
       row.append(meta, heading, el('p', item.reason, 'hint'), bottom, el('p', `首次发现 ${date(item.first_seen_at)} · 最近看到 ${date(item.last_seen_at)}`, 'hint'));
       $('results').append(row);
     }
