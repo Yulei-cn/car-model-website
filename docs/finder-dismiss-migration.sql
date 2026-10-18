@@ -1,5 +1,17 @@
 -- Add persistent per-watch dismissals. Safe to run again; existing data is preserved.
 begin;
+-- Completed searches must not block an immediate manual retry.
+create or replace function public.finder_claim_run() returns uuid
+language plpgsql security invoker set search_path = public as $$
+declare run_id uuid;
+begin
+  perform pg_advisory_xact_lock(82147291);
+  if exists(select 1 from finder_runs where status = 'running' and started_at > now() - interval '5 minutes') then return null; end if;
+  update finder_runs set status = 'failed', finished_at = now(), summary = '{"error":"任务超时，等待下次重试"}'
+    where status = 'running' and started_at <= now() - interval '5 minutes';
+  insert into finder_runs default values returning id into run_id;
+  return run_id;
+end $$;
 alter table public.finder_items add column if not exists dismissed_snapshot jsonb;
 alter table public.finder_items add column if not exists reopened_at timestamptz;
 

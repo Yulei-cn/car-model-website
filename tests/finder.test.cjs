@@ -121,6 +121,11 @@ test('Postgres schema: idempotent seed, dedupe, preserve read status, lock and a
     assert.equal((await db.query('select finder_dismiss_item($1, $2::jsonb) as ok', [row.id, oldSnapshot])).rows[0].ok, false);
     assert.ok((await db.query('select finder_claim_run() as id')).rows[0].id);
     assert.equal((await db.query('select finder_claim_run() as id')).rows[0].id, null);
+    await db.exec("update finder_runs set status = 'success', finished_at = now() where status = 'running'");
+    assert.ok((await db.query('select finder_claim_run() as id')).rows[0].id, 'completed run allows immediate retry');
+    await db.exec("update finder_runs set started_at = now() - interval '6 minutes' where status = 'running'");
+    assert.ok((await db.query('select finder_claim_run() as id')).rows[0].id, 'stale run permits recovery');
+    assert.equal((await db.query("select count(*)::int as count from finder_runs where status = 'running'")).rows[0].count, 1);
     for (let i = 0; i < 7; i++) assert.ok((await db.query('select finder_add_watch($1::jsonb) as id', [JSON.stringify({ name: `test${i}`, query: 'Norev' })])).rows[0].id);
     assert.equal((await db.query('select finder_add_watch($1::jsonb) as id', ['{"name":"overflow","query":"Norev"}'])).rows[0].id, null);
     await db.exec('reset role; set role anon;');

@@ -34,7 +34,7 @@ language plpgsql security invoker set search_path = public as $$
 declare run_id uuid;
 begin
   perform pg_advisory_xact_lock(82147291);
-  if exists(select 1 from finder_runs where started_at > now() - interval '5 minutes') then return null; end if;
+  if exists(select 1 from finder_runs where status = 'running' and started_at > now() - interval '5 minutes') then return null; end if;
   update finder_runs set status = 'failed', finished_at = now(), summary = '{"error":"任务超时，等待下次重试"}'
     where status = 'running' and started_at <= now() - interval '5 minutes';
   insert into finder_runs default values returning id into run_id;
