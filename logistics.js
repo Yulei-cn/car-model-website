@@ -15,13 +15,15 @@ const frenchToChinese = {
   "Informations sur l'objet": "商品信息", "Modèle Peugeot 4002": "标致 4002 模型车", "Photos de l'objet": "商品照片", "Photos disponibles pour cette commande.": "此订单可查看商品照片。",
   "Adresse pour le retrait de la commande": "订单取件地址", "France métropolitaine": "法国本土", "Recevoir l'itinéraire à suivre": "获取路线", "Horaires d'ouverture": "营业时间", "Aujourd'hui, ouvert jusqu'à": "今天营业至",
   "Informations de paiement": "付款信息", "Payé par": "下单人", "Frais de livraison": "运费", "Total de la commande": "订单总额", "Une question sur cette commande ?": "对此订单有疑问？", "Contactez-nous": "联系我们", "6:30 pm": "18:30",
-  "5 juin 2026": "2026 年 6 月 5 日", "10 juin 2026 · 15:34": "2026 年 6 月 10 日 · 15:34", "1er juillet 2026": "2026 年 7 月 1 日", "15 octobre 2026": "2026 年 10 月 15 日", "18 octobre 2026 · 18:00": "2026 年 10 月 18 日 · 18:00",
+  "5 juin 2026": "2026 年 6 月 5 日", "10 juin 2026 · 15:34": "2026 年 6 月 10 日 · 15:34", "1er juillet 2026": "2026 年 7 月 1 日", "15 octobre 2026": "2026 年 10 月 15 日", "18 octobre 2026": "2026 年 10 月 18 日", "18 octobre 2026 · 18:00": "2026 年 10 月 18 日 · 18:00",
   "EN ROUTE VERS LA DOUANE FRANÇAISE": "前往法国海关", "Citroën DS5 Phase 1 · Norev · 1/18": "雪铁龙 DS5 Phase 1 · Norev · 1/18",
   "Le colis a été pris en charge par le transporteur le 7 octobre 2026 à 17:47 et est en route vers la douane française.": "包裹已于 2026 年 10 月 7 日 17:47 由快递取走，正前往法国海关。",
   "Le colis a été pris en charge par le transporteur le 18 octobre 2026 à 18:00 et est en route vers la douane française.": "包裹已于 2026 年 10 月 18 日 18:00 由快递取走，正前往法国海关。",
+  "Le colis a été pris en charge par le transporteur le 18 octobre 2026 et est en route vers la douane française.": "包裹已于 2026 年 10 月 18 日由快递取走，正前往法国海关。",
   "En route vers la douane française": "前往法国海关途中", "6 octobre 2026 à 12:50": "2026 年 10 月 6 日 12:50", "6 octobre 2026 · 12:50": "2026 年 10 月 6 日 · 12:50", "7 octobre 2026 · 17:47": "2026 年 10 月 7 日 · 17:47", "En cours": "处理中", "Livré": "已送达", "À venir": "待更新",
   "7 octobre 2026 à 17:47 — pris en charge par le transporteur": "2026 年 10 月 7 日 17:47 — 快递已取件", "Citroën DS5 Phase 1 · Norev": "雪铁龙 DS5 Phase 1 · Norev", "Couleur : Blanche": "颜色：白色", "Échelle : 1/18": "比例：1/18",
   "18 octobre 2026 à 18:00 — pris en charge par le transporteur": "2026 年 10 月 18 日 18:00 — 快递已取件", "Volkswagen VW Golf 8 GTI · 1/18": "大众 VW Golf 8 GTI · 1/18", "Volkswagen VW Golf 8 GTI": "大众 VW Golf 8 GTI", "Couleur : Grise": "颜色：灰色",
+  "18 octobre 2026 à 10:52": "2026 年 10 月 18 日 10:52",
   "Peugeot 4002, photo 1": "标致 4002，照片 1", "Peugeot 4002, photo 2": "标致 4002，照片 2", "Citroën DS5, photo 1": "雪铁龙 DS5，照片 1", "Citroën DS5, photo 2": "雪铁龙 DS5，照片 2", "Citroën DS5, photo 3": "雪铁龙 DS5，照片 3",
   "Citroën DS5 Phase 1 Norev 1/18, blanche": "雪铁龙 DS5 Phase 1 Norev 1/18，白色", "Volkswagen VW Golf 8 GTI 1/18, grise": "大众 VW Golf 8 GTI 1/18，灰色", "Volkswagen Golf 8 GTI, photo 1": "大众 Golf 8 GTI，照片 1", "Volkswagen Golf 8 GTI, photo 2": "大众 Golf 8 GTI，照片 2", "Volkswagen Golf 8 GTI, photo 3": "大众 Golf 8 GTI，照片 3"
 };
