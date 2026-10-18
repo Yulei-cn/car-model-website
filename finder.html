@@ -26,7 +26,7 @@
             <label>显示名称<input name="name" maxlength="100" placeholder="例如 Peugeot 207 CC 白色" required></label>
             <label>eBay 搜索词<input name="query" maxlength="120" placeholder="Peugeot 207 CC Norev 1/18" required></label>
             <div class="form-pair"><label>目标颜色<select name="color"><option value="">不限</option><option value="white">白色</option><option value="blue">蓝色</option></select></label><label>最高商品价 €<input name="max_price" type="number" min="0.01" max="100000" step="0.01" placeholder="不限"></label></div>
-            <p class="hint">价格不含运费。颜色只用于标题判断，无法确认的商品保留在“待确认”。最多 10 个条件。</p>
+            <p class="hint">价格不含运费。指定颜色必须在标题中明确匹配；颜色不明、多色或明确标注瑕疵的商品不收录，可能漏掉标题不完整的商品。最多 10 个条件。</p>
             <button class="button primary" type="submit">保存关注</button>
           </form>
         </aside>

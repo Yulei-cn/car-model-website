@@ -4,25 +4,36 @@ const fs = require('node:fs');
 const { PGlite } = require('@electric-sql/pglite');
 const { classify, validateWatch, secretMatches } = require('../lib/finder.cjs');
 
-test('matching preserves uncertain colors and filters wrong scale, empty boxes and budget', () => {
+test('matching strictly filters uncertain colors, wrong scale, empty boxes and budget', () => {
   const watch = { color: 'blue', max_price: 100 };
   assert.equal(classify('Norev Citroën DS5 BLEUE 1/18', watch, { value: '89', currency: 'EUR' }).match, 'match');
-  assert.equal(classify('Norev DS5 1:18', watch, { value: '89', currency: 'EUR' }).match, 'review');
+  assert.equal(classify('Norev DS5 1:18', watch, { value: '89', currency: 'EUR' }).match, 'excluded');
   assert.equal(classify('Norev DS5 blue 1/43', watch).match, 'excluded');
   assert.equal(classify('Norev DS5 blue 1/18 BOITE VIDE', watch).match, 'excluded');
   assert.equal(classify('Norev DS5 blue 1/18', watch, { value: '101', currency: 'EUR' }).match, 'excluded');
   assert.equal(classify('Norev DS5 blue 1/18', watch, { value: '89', currency: 'USD' }).match, 'review');
 });
-test('explicit wrong colors are excluded; missing or multiple colors require review', () => {
+test('wrong, missing or multiple colors are excluded', () => {
   const white = { color: 'white' };
   const result = classify('NOREV 1/18 PEUGEOT 207 CC BLEUE', white);
   assert.equal(result.match, 'excluded');
   assert.match(result.reason, /蓝色.*白色/);
   assert.equal(classify('Norev 1/18 Peugeot 207 CC BLANCHE', white).match, 'match');
-  assert.equal(classify('Norev 1/18 Peugeot 207 CC', white).match, 'review');
-  assert.equal(classify('Norev 1/18 Peugeot 207 CC bleu blanc', white).match, 'review');
+  assert.equal(classify('Norev 1/18 Peugeot 207 CC', white).match, 'excluded');
+  assert.equal(classify('Norev 1/18 Peugeot 207 CC bleu blanc', white).match, 'excluded');
   assert.equal(classify('Norev 1/18 Citroen C6 argenté', { color: 'blue' }).match, 'excluded');
   assert.equal(classify('Norev 1/18 Citroen DS5 BLEUE', { color: '' }).match, 'match');
+});
+test('Roland Garros defect listing is excluded; clean condition wording is preserved', () => {
+  const title = 'NOREV 1/18 PEUGEOT 207 CC ROLAND GARROS - WITH DEFECT READ DESCRIPTION';
+  assert.equal(classify(title, { color: 'white' }).match, 'excluded');
+  assert.equal(classify(title, { color: '' }).match, 'excluded');
+  for (const defect of ['WITH DEFECT', 'avec défaut', 'abîmée', 'broken', 'pour pièces']) {
+    assert.equal(classify(`Norev 1/18 blanc ${defect}`, { color: 'white' }).match, 'excluded');
+  }
+  for (const clean of ['NO DEFECTS', 'sans défaut', 'undamaged']) {
+    assert.equal(classify(`Norev 1/18 blanc ${clean}`, { color: 'white' }).match, 'match');
+  }
 });
 test('validation and authentication reject invalid input and empty secrets', () => {
   assert.throws(() => validateWatch({ name: 'car', query: 'car', max_price: -1 }));
