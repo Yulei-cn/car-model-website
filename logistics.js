@@ -23,7 +23,7 @@ const frenchToChinese = {
   "En route vers la douane française": "前往法国海关途中", "6 octobre 2026 à 12:50": "2026 年 10 月 6 日 12:50", "6 octobre 2026 · 12:50": "2026 年 10 月 6 日 · 12:50", "7 octobre 2026 · 17:47": "2026 年 10 月 7 日 · 17:47", "En cours": "处理中", "Livré": "已送达", "À venir": "待更新",
   "7 octobre 2026 à 17:47 — pris en charge par le transporteur": "2026 年 10 月 7 日 17:47 — 快递已取件", "Citroën DS5 Phase 1 · Norev": "雪铁龙 DS5 Phase 1 · Norev", "Couleur : Blanche": "颜色：白色", "Échelle : 1/18": "比例：1/18",
   "18 octobre 2026 à 18:00 — pris en charge par le transporteur": "2026 年 10 月 18 日 18:00 — 快递已取件", "Volkswagen VW Golf 8 GTI · 1/18": "大众 VW Golf 8 GTI · 1/18", "Volkswagen VW Golf 8 GTI": "大众 VW Golf 8 GTI", "Couleur : Grise": "颜色：灰色",
-  "18 octobre 2026 à 10:52": "2026 年 10 月 18 日 10:52",
+  "18 octobre 2026 à 10:54": "2026 年 10 月 18 日 10:54",
   "Peugeot 4002, photo 1": "标致 4002，照片 1", "Peugeot 4002, photo 2": "标致 4002，照片 2", "Citroën DS5, photo 1": "雪铁龙 DS5，照片 1", "Citroën DS5, photo 2": "雪铁龙 DS5，照片 2", "Citroën DS5, photo 3": "雪铁龙 DS5，照片 3",
   "Citroën DS5 Phase 1 Norev 1/18, blanche": "雪铁龙 DS5 Phase 1 Norev 1/18，白色", "Volkswagen VW Golf 8 GTI 1/18, grise": "大众 VW Golf 8 GTI 1/18，灰色", "Volkswagen Golf 8 GTI, photo 1": "大众 Golf 8 GTI，照片 1", "Volkswagen Golf 8 GTI, photo 2": "大众 Golf 8 GTI，照片 2", "Volkswagen Golf 8 GTI, photo 3": "大众 Golf 8 GTI，照片 3"
 };
