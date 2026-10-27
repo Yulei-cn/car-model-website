@@ -45,6 +45,8 @@ h3 { margin: 24px 0 16px; font-size: 15px; }
 .notice span { display: grid; width: 17px; height: 17px; flex: 0 0 17px; place-items: center; border-radius: 50%; background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; }
 .notice.delay-notice { background: #fff1f1; color: #9d2020; }
 .notice.delay-notice span { background: #c62828; }
+.notice.strike-notice { background: #fff8e7; color: #7a4b0c; }
+.notice.strike-notice span { background: #b7791f; }
 .order-details, .progress-section { padding: 0 0 27px; margin-bottom: 27px; border-bottom: 1px solid var(--line); }
 .tracking { padding-bottom: 27px; margin-bottom: 27px; border-bottom: 1px solid var(--line); }
 .order-details h2, .progress-section h2, .tracking h2 { margin-bottom: 19px; }
