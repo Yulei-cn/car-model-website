@@ -81,6 +81,7 @@ dd { margin: 0; font-size: 14px; }
 .proof-section p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
 .proof-section .proof-date { margin: 12px 0 16px; color: var(--ink); font-weight: 700; }
 .proof-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.proof-gallery + .proof-gallery { margin-top: 10px; }
 .proof-gallery a { display: block; overflow: hidden; border-radius: 4px; background: var(--surface); }
 .proof-gallery img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .2s ease; }
 .proof-gallery a:hover img { transform: scale(1.04); }
