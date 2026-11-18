@@ -2,6 +2,14 @@ const printButton = document.querySelector("#print-page");
 const languageButton = document.querySelector("#language-toggle");
 
 const frenchToChinese = {
+  "Commande 5": "订单 5",
+  "Alpine Alpenglow 1/18": "Alpine Alpenglow 1/18",
+  "17 novembre 2026 à 16:43:50": "2026 年 11 月 17 日 16:43:50",
+  "17 novembre 2026 · 16:46:27": "2026 年 11 月 17 日 · 16:46:27",
+  "18 novembre 2026 · 15:48 (heure de Paris)": "2026 年 11 月 18 日 · 15:48（巴黎时间）",
+  "Le colis a été remis au transporteur le 18 novembre 2026 à 15:48 (heure de Paris).": "包裹已于 2026 年 11 月 18 日 15:48（巴黎时间）交给快递员。",
+  "18 novembre 2026 à 15:48 (heure de Paris) — pris en charge par le transporteur": "2026 年 11 月 18 日 15:48（巴黎时间）— 快递已取件",
+  "19 décembre 2026 — arrivée prévue à la douane chinoise": "2026 年 12 月 19 日 — 预计抵达中国海关",
   "Commande 4": "订单 4",
   "Détails de la commande | NOREV Peugeot Onyx Concept Car 1/18": "订单详情 | NOREV 标致 Onyx 概念车 1/18",
   "NOREV Peugeot Onyx Concept Car · 1/18": "NOREV 标致 Onyx 概念车 · 1/18",
